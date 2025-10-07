@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculation History</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculation History</h1>
+        <div id="history-list">
+            <!-- History will be loaded here -->
+        </div>
+        <a href="/">Back to Form</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const historyList = document.getElementById('history-list');
+            const calculations = JSON.parse(localStorage.getItem('calculations')) || [];
+
+            if (calculations.length === 0) {
+                historyList.innerHTML = '<p>No calculations stored yet.</p>';
+            } else {
+                let html = '<ul>';
+                calculations.forEach(calc => {
+                    const date = new Date(calc.timestamp).toLocaleString();
+                    html += `<li>
+                        <strong>Date:</strong> ${date}<br>
+                        Income 1: $${calc.income1.toFixed(2)}<br>
+                        Income 2: $${calc.income2.toFixed(2)}<br>
+                        Total: $${calc.total.toFixed(2)}
+                    </li><hr>`;
+                });
+                html += '</ul>';
+                historyList.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+</html>

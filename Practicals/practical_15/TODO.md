@@ -1,0 +1,5 @@
+- [x] Create project directory practical_15
+- [x] Create package.json with dependencies
+- [x] Create server.js with login, profile, logout routes and session management
+- [x] Install npm dependencies
+- [ ] Run the server and test functionality

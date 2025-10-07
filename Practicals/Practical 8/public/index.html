@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gym Rep Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .counter-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 300px;
+    }
+
+    .count {
+      font-size: 5rem;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    button {
+      flex: 1;
+      margin: 0 5px;
+      padding: 15px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 500px) {
+      .count {
+        font-size: 4rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="counter-container">
+    <h2>Gym Rep Counter</h2>
+    <div id="count" class="count">0</div>
+    <div class="buttons">
+      <button onclick="updateCount(-1)">−</button>
+      <button onclick="updateCount(1)">+</button>
+      <button onclick="resetCount()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    const countDisplay = document.getElementById('count');
+
+    function fetchCount() {
+      fetch('/api/count')
+        .then(res => res.json())
+        .then(data => countDisplay.textContent = data.count);
+    }
+
+    function  updateCount(value) {
+      fetch('/api/count', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ change: value })
+      })
+      .then(res => res.json())
+      .then(data => countDisplay.textContent = data.count);
+    }
+
+    function resetCount() {
+      fetch('/api/reset', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => countDisplay.textContent = data.count);
+    }
+
+    // Initial load
+    fetchCount();
+  </script>
+
+</body>
+</html>

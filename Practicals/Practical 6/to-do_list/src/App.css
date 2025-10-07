@@ -1,0 +1,164 @@
+/* Background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #1b1f3a;
+  color: #333;
+}
+
+/* Main App */
+.todo-app {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.todo-container {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading */
+.todo-container h2 {
+  text-align: center;
+  color: #2a2a2a;
+  margin-bottom: 25px;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+/* Input Section */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.input-group input,
+.input-group select {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #5b9df9;
+  box-shadow: 0 0 0 2px rgba(91, 157, 249, 0.2);
+}
+
+.input-group button {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.input-group button:hover {
+  opacity: 0.9;
+}
+
+/* Voice Command Button */
+.voice-btn {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(to right, #2575fc, #6a11cb);
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  margin-top: 8px;
+}
+
+.voice-btn.listening {
+  background: linear-gradient(to right, #d90429, #6a11cb);
+  box-shadow: 0 0 8px 2px rgba(217, 4, 41, 0.7);
+}
+
+/* Task List */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-card {
+  background: #f7f8fc;
+  padding: 16px 20px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.task-card:hover {
+  transform: scale(1.01);
+}
+
+/* Task Info */
+.task-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-text {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.priority-tag {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.priority-low {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.priority-medium {
+  background-color: #fff3cd;
+  color: #664d03;
+}
+
+.priority-high {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+/* Actions */
+.task-actions button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.task-actions button:hover {
+  transform: scale(1.2);
+}
